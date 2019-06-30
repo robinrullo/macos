@@ -119,6 +119,7 @@ task :brew do
     pyenv
     rbenv
     readline
+    redis
     stern
     travis
     tree
