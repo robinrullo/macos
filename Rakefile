@@ -2,7 +2,7 @@
 #!/usr/bin/ruby
 
 task :default => [:xcode, :zshell, :mac_os, :brew, :cask, :computer_name, :vim_config, :git_config, :ssh_config, :nvm_install, :cask_configs]
-task :continue => [:brew, :cask, :vim_config, :git_config, :ssh_config, :nvm_install, :cask_configs, :computer_name]
+task :continue => [:cask_configs, :computer_name]
 
 def curl what
   sh "curl -O #{what}"
@@ -57,7 +57,8 @@ end
 
 desc "Installs Oh-my zshell"
 task :zshell do
-  sh "curl -L http://install.ohmyz.sh | sh"
+  sh "curl -L http://install.ohmyz.sh | sh" unless Dir.exists? "#{ENV['HOME']}/.oh-my-zsh"
+  sh "chsh -s /bin/zsh"
 end
 
 def install_homebrew
@@ -71,7 +72,7 @@ task :install_homebrew do
 end
 
 def install_profiles
-  #sh "curl -L http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme -o ~/.oh-my-zsh/custom/themes/bullet-train.zsh-theme"
+  sh "curl -L http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme -o ~/.oh-my-zsh/custom/themes/bullet-train.zsh-theme"
   sh "cp bullet-train.zsh-theme ~/.oh-my-zsh/custom/themes/"
   sh "cp .zshrc ~"
 end
@@ -82,10 +83,12 @@ end
 
 desc "Sets some macOS preferred settings"
 task :mac_os do
-  sh "git clone https://github.com/haf/macos.git"
-  in_dir "macos" do
-    install_homebrew
-    install_profiles
+  unless Dir.pwd.include?("macos") then
+    sh "git clone https://github.com/haf/macos.git"
+    in_dir "macos" do
+      install_homebrew
+      install_profiles
+    end
   end
 end
 
@@ -96,14 +99,13 @@ task :brew do
   sh "brew cleanup"
   sh "brew tap homebrew/cask"
   sh "brew tap homebrew/cask-fonts"
-  sh "brew tap caskroom/versions"
+  sh "brew tap homebrew/cask-versions"
   packages = %w|
     autoconf
     automake
     colordiff
     ctags
     editorconfig
-    erlang
     fzf
     git
     go
@@ -115,11 +117,9 @@ task :brew do
     ngrep
     nmap
     nvm
-    postgresql
     pyenv
     rbenv
     readline
-    redis
     stern
     travis
     tree
@@ -156,14 +156,11 @@ task :cask do
     font-roboto-condensed
     font-roboto-mono
     font-roboto-mono-for-powerline
-    font-roboto-slab
     font-robotomono-nerd-font
     font-robotomono-nerd-font-mono
     google-cloud-sdk
-    gpg-suite
     mailmate
     omnigraffle
-    postman
     resilio-sync
     sketch
     slack
