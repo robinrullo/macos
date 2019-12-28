@@ -109,9 +109,10 @@ task :brew do
     fzf
     git
     go
-    kubernetes-helm
     jq
     kubectl
+    kubernetes-helm
+    kustomize
     libtool
     libuv
     ngrep
@@ -124,8 +125,8 @@ task :brew do
     travis
     tree
     ucspi-tcp
-    yarn
     watch
+    yarn
     zlib
   |.join(' ')
   brew packages
