@@ -108,6 +108,7 @@ task :brew do
     editorconfig
     fzf
     git
+    git-lfs
     go
     jq
     kubectl
