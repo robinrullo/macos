@@ -141,6 +141,7 @@ task :cask do
     iterm2
 
     1password
+    1password-cli
     adobe-creative-cloud
     authy
     caffeine
