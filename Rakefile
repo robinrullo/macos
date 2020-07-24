@@ -105,6 +105,7 @@ task :brew do
     automake
     colordiff
     ctags
+    direnv
     editorconfig
     fzf
     git
