@@ -143,7 +143,6 @@ task :cask do
 
     1password
     1password-cli
-    adobe-creative-cloud
     authy
     caffeine
     chromium
@@ -152,16 +151,11 @@ task :cask do
     dotnet-sdk
     firefox
     font-awesome-terminal-fonts
-    font-fontawesome
     font-monoid
     font-monoid-nerd-font
-    font-monoid-nerd-font-mono
     font-roboto
-    font-roboto-condensed
     font-roboto-mono
     font-roboto-mono-for-powerline
-    font-robotomono-nerd-font
-    font-robotomono-nerd-font-mono
     google-cloud-sdk
     mailmate
     omnigraffle
