@@ -123,6 +123,7 @@ task :brew do
     pyenv
     rbenv
     readline
+    skaffold
     stern
     travis
     tree
