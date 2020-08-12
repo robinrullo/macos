@@ -111,6 +111,7 @@ task :brew do
     git
     git-lfs
     go
+    hasura-cli
     jq
     kubectl
     kubernetes-helm
