@@ -122,6 +122,7 @@ task :brew do
     nmap
     nvm
     pyenv
+    pipenv
     rbenv
     readline
     skaffold
