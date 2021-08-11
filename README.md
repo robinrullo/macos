@@ -19,6 +19,3 @@
  - Installs latest go, node, .net core, etc
 
 You can read [`Rakefile`](./Rakefile); it's easy to follow.
-
-Sponsored by
-[qvitoo – A.I. bookkeeping](https://qvitoo.com/?utm_source=github&utm_campaign=repos).
