@@ -110,28 +110,35 @@ task :brew do
     fzf
     git
     git-lfs
+    git-flow-avh
+    gnupg
+    gnutls
     go
     hasura-cli
     jq
     kubectl
-    kubernetes-helm
+    helm
     kustomize
     libtool
     libuv
     ngrep
     nmap
     nvm
+    pinentry-mac
+    popt
+    pygments
     pyenv
     pipenv
     rbenv
     readline
+    rsync
     skaffold
     stern
+    thefuck
     travis
     tree
     ucspi-tcp
     watch
-    yarn
     zlib
   |.join(' ')
   brew packages
@@ -143,15 +150,13 @@ desc "Installs common casks"
 task :cask do
   packages = %w|
     iterm2
-
-    1password
-    1password-cli
-    authy
     caffeine
-    chromium
-    copyclip
+    cleanmymac
+    brave-browser
+    discord
     docker
     dotnet-sdk
+    eclipse-java
     firefox
     font-awesome-terminal-fonts
     font-monoid
@@ -160,19 +165,28 @@ task :cask do
     font-roboto-mono
     font-roboto-mono-for-powerline
     google-cloud-sdk
-    mailmate
+    gitkraken
+    google-chrome
+    jdownloader
+    jetbrains-toolbox
+    macvim
+    microsoft-auto-update
+    microsoft-office
+    nordvpn
     omnigraffle
-    resilio-sync
-    sketch
+    postman
+    qgis
     slack
-    spectacle
+    rectangle
+    shottr
     spotify
     steam
-    typora
+    vagrant
+    vagrant-manager
+    vagrant-completion
+    vagrant-vmware-utility
+    virtualbox
     visual-studio-code
-
-    rider
-    android-studio
   |.join(' ')
   cask packages
 end
@@ -181,8 +195,6 @@ desc "Configure the installed casks"
 task :cask_configs do
   sh "mkdir -p ~/.iterm && cp com.googlecode.iterm2.plist ~/.iterm"
 
-  # https://github.com/eczarny/spectacle/issues/244
-  sh %{cp spectacle.json "#{ENV['HOME']}/Library/Application Support/Spectacle/Shortcuts.json"}
   sh %{mkdir -p "#{ENV['HOME']}/Library/Application Support/Code/User"}
   sh %{cp vscode.json "#{ENV['HOME']}/Library/Application Support/Code/User/settings.json"}
 end
